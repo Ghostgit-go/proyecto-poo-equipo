@@ -9,6 +9,7 @@ University project for object-oriented programming, laboratory and equipment man
 4. 
 
 | Tarea / Actividad | Integrante 1 | Integrante 2 | Integrante 3 | Integrante 4 |
+|---|:---:|:---:|:---:|:---:|
 | Diseño UML (diagrama de clases) |Valentina Diaz |Camila Galan |Samuel Munevar |Santiago Orrego |
 | Definición de requerimientos | | | | |
 | Implementación - Módulo 1 | | | | |
