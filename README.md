@@ -27,7 +27,7 @@ University project for object-oriented programming, laboratory and equipment man
 
 | Integrante | % de Contribución | Rol principal |
 |---|:---:|---|
-| Integrante 1 | | |
-| Integrante 2 | | |
-| Integrante 3 | | |
-| Integrante 4 | | |
+| Valentina Diaz |28% | Diseñora UML y diagramas|
+| Camila Galán |15% |Revisión de UML|
+| Samuel Munévar |30% | programador Principal|
+|Santiago Orrego |27% | Programador y  debugger |
