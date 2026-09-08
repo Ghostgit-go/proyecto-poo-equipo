@@ -22,7 +22,6 @@ University project for object-oriented programming, laboratory and equipment man
 | Gestión de Git (commits, ramas, merges) | | | | |
 | Presentación / sustentación | | | | |
 
-**Leyenda:** ✅ Responsable principal · 🔄 Apoyo/colaboración · También puedes usar % de contribución en cada celda.
 
 ### Resumen de Contribución Total
 
