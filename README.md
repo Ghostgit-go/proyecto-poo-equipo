@@ -3,9 +3,9 @@ University project for object-oriented programming, laboratory and equipment man
 ## Matriz de Contribución
 
 **Integrantes:**
-Valentina Diaz 
-Camila Galan
-Samuel Munevar
+Valentina Diaz ,
+Camila Galan,
+Samuel Munevar,
 Santiago Orrego
 
 | Tarea / Actividad | Integrante 1 | Integrante 2 | Integrante 3 | Integrante 4 |
