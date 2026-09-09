@@ -7,7 +7,7 @@ public class Profesor extends Usuario{
 		super(nombre, idUnico, correo, tipo);
 		this.materia = materia;
 	}
-	
+	// autoriza al estudiante a usar el equipo especifico
 	public void autorizarUsoEquipo(Equipos equipos, Estudiante estudiante) {
 		System.out.println(getNombre()+ "aurotiza a "+ estudiante.getNombre() + " a usar el/la <" + equipos.getNombre());
 	}

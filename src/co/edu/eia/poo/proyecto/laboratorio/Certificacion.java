@@ -7,7 +7,7 @@ public class Certificacion extends Formacion{
 		super(fechaEmision, vigencia, usuario, equipos);
 		this.tipoEquipoAutorizado = tipoEquipoAutorizado;
 	}
-	
+	// verifica que la certificacion siga vigente, sino, lanza la excepcion
 	public void validarCertificacionVigente() {
 		 if (!estaVigente()) {
 	            throw new IllegalStateException("La certificación está vencida.");

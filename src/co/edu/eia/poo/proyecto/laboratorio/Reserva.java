@@ -18,15 +18,15 @@ public class Reserva {
 		this.proposito = proposito;
 		this.estado = estado;
 	}
-	
+	// revisa si el laboratorio esta abierto para esa franja de tiempo
 	public boolean disponibilidad(Laboratorios laboratorios, String franja) {
 		return laboratorios.estaAbierto(horaInicio);
 	}
-	
+	//cancela la reserva, por ejemplo si el equipo quedara fuera de servicion
 	public void bloquearReserva(Equipos equipos) {
 		this.estado = "cancelada";
 	}
-	
+	//imprime el estado actual de la reserva
 	public void consultarReserva(Usuario usuario) {
 		System.out.println("reserva de " + usuario.getNombre() + estado);
 	}

@@ -8,7 +8,7 @@ public class Notificacion {
 		this.mensaje = mensaje;
 		this.destinatario = destinatario;
 	}
-	
+	// envia la notificacion dirigido al destinatario
 	public void enviarNotificacion() {
 		System.out.println("Para " + destinatario.getNombre() + " " + mensaje);
 	}

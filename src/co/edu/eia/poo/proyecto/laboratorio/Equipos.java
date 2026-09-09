@@ -30,15 +30,15 @@ public class Equipos {
 	public Laboratorios getLaboratorio() {
 		return laboratorio;}
 	
-	
+	// se invoca cuando un equipo este disponible
 	public boolean estaDisponible() {
 		return estado.equals("disponible");
 	}
-	
+	// para evitar tantos metodos sobrecargados, aqui le ponemos el estado al quipo
 	public void cambiarEstado(String estado) {
 		this.estado = estado;
 	}
-	
+	// este metodo se sobreescrible cuando haya que identificar cada tipo de equipo
 	public String tipoEspecifico() {
 		return "base"; // aqui se superpondra por cada tipo de equipo
 	}

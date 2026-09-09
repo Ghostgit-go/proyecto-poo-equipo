@@ -10,7 +10,7 @@ public class ListaEspera {
 		this.equipos = equipos;
 		this.franja = franja;
 	}
-	
+	// dice que el usuario entro a la lista para reservar tal equipo
 	public void agragarListaEspera() {
 		System.out.println(usuario.getNombre() + " esta en la lista de espera para "+ equipos.getCodigo());
 	}

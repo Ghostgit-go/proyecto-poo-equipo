@@ -16,7 +16,7 @@ public class TicketMantenimiento {
 		this.estado = estado;
 		this.historialCambios = historialCambios;
 	}
-	
+	//agrega una linea al historial, nunca sobreescribe, solo acomula
 	public void actualizarHistorial(String cambio) {
 		this.historialCambios += "\n" + cambio;
 	}

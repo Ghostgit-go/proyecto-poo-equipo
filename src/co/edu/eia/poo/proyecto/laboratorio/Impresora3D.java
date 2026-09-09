@@ -11,7 +11,7 @@ public class Impresora3D extends Equipos{
 	public String getMaterialCompatible() {
 		return materialCompatible;
 	}
-	
+	// aqui identifica el metodo de tipoespecifico y lo superpone por impresora 3d
 	@Override
 	public String tipoEspecifico() {
 		return "Impresora 3D";

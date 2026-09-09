@@ -1,4 +1,5 @@
 package co.edu.eia.poo.proyecto.laboratorio;
+import java.time.LocalDate;
 
 public class Formacion {
 	private String fechaEmision;
@@ -12,9 +13,12 @@ public class Formacion {
 		this.usuario = usuario;
 		this.equipos = equipos;
 	}
-	
-	public boolean estaVigente() {
-		return true;
+	//APOYO CON IA EN ESTE METODO
+	// compara la vigencia en formato yyyy-mm-dd cosntra la fecha actual del sistema, si ya paso retorna false
+	 public boolean estaVigente() {
+	        LocalDate fechaVigencia = LocalDate.parse(vigencia);
+	        LocalDate hoy = LocalDate.now();
+	        return !hoy.isAfter(fechaVigencia);
 	}
 	
 	public String getFechaEmision() {

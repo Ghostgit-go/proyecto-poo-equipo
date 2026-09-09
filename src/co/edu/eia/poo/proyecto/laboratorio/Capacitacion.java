@@ -9,7 +9,7 @@ public class Capacitacion extends Formacion {
 		this.temaCapacitacion = temaCapacitacion;
 		this.horasDuracion = horasDuracion;
 	}
-	
+	// registra la asistencia del usuario que asistio a la capacitacion
 	public void registrarAsistencia(Usuario usuario) {
 		System.out.println(usuario.getNombre() + "asistio a "+ temaCapacitacion);
 	}

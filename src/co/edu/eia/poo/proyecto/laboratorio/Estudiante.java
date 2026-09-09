@@ -9,7 +9,7 @@ public class Estudiante extends Usuario{
 		this.carrera = carrera;
 		this.semestre = semestre;
 	}
-	
+	// se inscribe ne una capacitacion
 	public void inscribirCapacitacion(Capacitacion capacitacion) {
 		System.out.println(getNombre()+ "Inscrito en "+ capacitacion.getTemaCapacitacion());
 	}

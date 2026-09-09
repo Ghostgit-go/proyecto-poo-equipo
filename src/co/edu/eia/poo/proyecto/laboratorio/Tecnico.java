@@ -7,7 +7,7 @@ public class Tecnico extends Usuario {
         super(idUnico, nombre, correo, tipo);
         this.especialidad = especialidad;
     }
-
+    //verifica que el equipo este disponible
     public void validarDisponibilidadEquipo(Equipos equipos) {
         if (!equipos.estaDisponible()) {
             throw new IllegalStateException("El equipo " + equipos.getCodigo() + " no está disponible");

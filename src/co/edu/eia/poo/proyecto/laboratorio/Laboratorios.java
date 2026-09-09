@@ -14,7 +14,7 @@ public class Laboratorios {
 		this.ubicacion = ubicacion;
 		this.horario = horario;
 	}
-	
+	// indica si el laboratorio est[a abierto, la hora aun no la usamos pero es para cuando haya que cruzar horarios
 	public boolean estaAbierto(int hora) {
 		return estado;
 	}

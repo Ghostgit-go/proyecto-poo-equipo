@@ -17,7 +17,7 @@ public class Multimetro extends Equipos {
 	public double getPrecision() {
 		return precision;
 	}
-	
+	// aqui identifica el metodo de tipoespecifico y lo superpone por multimetro
 	@Override
 	public String tipoEspecifico() {
 		return "Multimetro";
