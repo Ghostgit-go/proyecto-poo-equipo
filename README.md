@@ -24,8 +24,4 @@
 - Esta capacidad determina el número máximo de elementos que se pueden almacenar (ej. estudiantes, productos, vehículos, según el dominio del proyecto).
 - **Datos de prueba:** se precargan `[cantidad]` registros de ejemplo al iniciar el programa, ubicados en `[NombreClase / método]`, para validar el correcto funcionamiento de las operaciones (agregar, buscar, eliminar, listar).
 
-| Parámetro | Valor |
-|---|---|
-| Capacidad máxima (N) | |
-| Registros de prueba precargados | |
-| Clase donde se define N | |
+
