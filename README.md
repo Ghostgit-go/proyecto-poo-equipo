@@ -17,7 +17,7 @@ Santiago Orrego
 | Implementación - Módulo 3 |Samuel Munevar  |Santiago Orrego | | |
 | Manejo de excepciones |Valentina Diaz |Camila Galan |Samuel Munevar |Santiago Orrego |
 | Pruebas unitarias |Samuel Munevar | | | |
-| Integración y debugging |Samuel Munevar | | | |
+| Integración y debugging |Samuel Munevar |Santiago Orrego | | |
 | Documentación (README, comentarios) |Samuel Munevar |Santiago Orrego |Valentina Diaz | |
 | Gestión de Git (commits, ramas, merges) |Samuel Munevar |Santiago Orrego  | | |
 | Presentación / sustentación | | | | |
