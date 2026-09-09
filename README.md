@@ -1,31 +1,42 @@
-## Cómo importar el proyecto
+Proyecto_Laboratorio
 
-1. Abre Eclipse.
-2. Ve a `File > Import > Git > Projects from Git > Clone URI`.
-3. Pega la URL del repositorio (HTTPS o SSH) y sigue el asistente.
-4. Cuando termine el clonado, selecciona **"Import as general project"** o **"Import existing Eclipse projects"** según corresponda.
-5. Finaliza el asistente; el proyecto quedará visible en el **Package Explorer**.
+University project for object-oriented programming, laboratory and equipment management.
 
-## Cómo ejecutar el proyecto
+Cómo importar el proyecto
+Abre Eclipse.
+Ve a File > Import > Git > Projects from Git > Clone URI.
+Pega la URL del repositorio (HTTPS o SSH) y sigue el asistente.
+Cuando termine el clonado, selecciona "Import existing Eclipse projects".
+Finaliza el asistente; el proyecto Proyecto_Laboratorio quedará visible en el Package Explorer.
+El proyecto usa Java SE 21 como JRE del classpath; verifica que tengas ese JDK instalado (o uno compatible) en Eclipse.
+Cómo ejecutar el proyecto
+Ubica la clase Prueba.java en el paquete co.edu.eia.poo.proyecto.laboratorio — contiene el método main.
+Click derecho sobre el archivo → Run As > Java Application.
+La consola mostrará, en orden, el registro de usuarios, laboratorios, equipos, capacitaciones/certificaciones, una reserva, la apertura y cierre de una sesión de uso, una lista de espera y un ticket de mantenimiento con su historial de cambios.
+Cómo probar el proyecto
 
-1. Ubica la clase con el método `main` (por ejemplo `[NombreClasePrincipal].java`).
-2. Click derecho sobre el archivo → `Run As > Java Application`.
-3. La ejecución mostrará el menú/resultados por consola.
+Actualmente el proyecto no cuenta con pruebas unitarias (JUnit); la validación se hace ejecutando Prueba.java, que actúa como una prueba de integración manual: crea instancias de cada clase del modelo (Estudiante, Profesor, Tecnico, AuxiliarLaboratorio, Laboratorios, Impresora3D, CortadoraLaser, Multimetro, Capacitacion, Certificacion, Reserva, SesionUso, ListaEspera, TicketMantenimiento, Notificacion) y llama sus métodos principales, imprimiendo los resultados por consola para verificar que el flujo completo (registro → reserva → uso → mantenimiento → notificación) funcione correctamente.
 
-## Cómo probar el proyecto
+Para probar manualmente:
 
-1. Las pruebas se encuentran en la carpeta `src/test` (o `[ruta_de_pruebas]`).
-2. Click derecho sobre la clase de prueba → `Run As > JUnit Test`.
-3. Revisa la consola de resultados de JUnit en Eclipse (verde = pasó, rojo = falló).
+Ejecuta Prueba.java como se indicó arriba.
+Revisa la salida en la consola de Eclipse y compárala con el comportamiento esperado de cada método (por ejemplo, estaAbierto(), disponibilidad(), estaVigente()).
+Si modificas alguna clase, puedes agregar nuevos objetos/llamados en Prueba.java para validar el cambio, o crear pruebas JUnit en una carpeta test si se requiere formalizar la validación.
+Capacidad N usada en arreglos y datos de prueba
 
-## Capacidad N usada en arreglos y datos de prueba
+Este proyecto no utiliza arreglos ni una capacidad fija N: no hay array[] ni colecciones (ArrayList, List, etc.) para almacenar usuarios, equipos o reservas. Cada objeto se crea de forma individual (una sola instancia por entidad) directamente en el método main() de Prueba.java.
 
-- El proyecto utiliza arreglos de tamaño fijo definidos por la constante `N = [valor]`, ubicada en `[NombreClase].java`.
-- Esta capacidad determina el número máximo de elementos que se pueden almacenar (ej. estudiantes, productos, vehículos, según el dominio del proyecto).
-- **Datos de prueba:** se precargan `[cantidad]` registros de ejemplo al iniciar el programa, ubicados en `[NombreClase / método]`, para validar el correcto funcionamiento de las operaciones (agregar, buscar, eliminar, listar).
+Los datos de prueba son los valores hardcodeados en Prueba.java, por ejemplo:
 
-| Parámetro | Valor |
-|---|---|
-| Capacidad máxima (N) | |
-| Registros de prueba precargados | |
-| Clase donde se define N | |
+Entidad	Datos de prueba
+Estudiante	Natalia (U1, Ing. de Sistemas, semestre 5)
+Profesor	Carlos (U2, Mecánica)
+Técnico	Laura Gómez (U3, Electrónica)
+Auxiliar de laboratorio	Pedro Díaz (U4, turno mañana)
+Laboratorio	LAB01 – Laboratorio de Fabricación (Bloque 5, piso 2)
+Equipos	Impresora 3D Ender 3 (EQ001), Cortadora Láser K40 (EQ002), Multímetro Fluke 117 (EQ003)
+Capacitación / Certificación	Uso seguro de cortadora láser (estudiante Natalia)
+Reserva	Cortadora láser, 2024-05-10, 10:00–12:00
+Ticket de mantenimiento	Ruido anormal en el motor (cortadora láser)
+
+Si el proyecto evoluciona a manejar múltiples usuarios/equipos con arreglos o listas de tamaño limitado, actualiza esta sección indicando el valor de N, dónde se define y cuántos registros de prueba se precargan.
