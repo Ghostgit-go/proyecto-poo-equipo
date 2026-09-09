@@ -29,5 +29,5 @@ Santiago Orrego
 |---|:---:|---|
 | Valentina Diaz |28% | Diseñora UML y diagramas|
 | Camila Galán |15% |Revisión de UML|
-| Samuel Munévar |30% | programador Principal|
+| Samuel Munevar |30% | programador Principal|
 |Santiago Orrego |27% | Programador y  debugger |
