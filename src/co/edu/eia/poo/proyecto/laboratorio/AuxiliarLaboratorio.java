@@ -1,12 +1,19 @@
 package co.edu.eia.poo.proyecto.laboratorio;
+import java.time.LocalDate;
 
 public class AuxiliarLaboratorio extends Usuario{
 	private String turno;
 	
-	public AuxiliarLaboratorio(String nombre, String idUnico, String correo, String tipo, String turno) {
-		super(nombre, idUnico, correo, tipo);
+	public AuxiliarLaboratorio(String nombre, String id, String correo, String turno) {
+		super(nombre, id, correo);
 		this.turno = turno;
 	}
+	
+	@Override
+	public String getTipoUsuario() {
+		return "Auxiliar Laboratorio - Se encarga de registrar capacitaciones y certificaciones al sistema, y abre sesiones para prestar laboratorios";
+	}
+	
 	// el auxiliar registro una firmacion por ejemp, el registra la capacitacion de uso de cortadoraalaser, y tambien la certifica
 	public void registrarCapacitacionesCertificaciones(Capacitacion capacitacion, Certificacion certificacion) {
 		System.out.println("formacion registrada por " + getNombre());
@@ -20,9 +27,9 @@ public class AuxiliarLaboratorio extends Usuario{
 		
 	}
 	//valida que la cerfificacion est[e vigente
-	public void validarCertificado(Certificacion certificacion) {
-        certificacion.validarCertificacionVigente();
-    }
+	public boolean validarCertificado(Certificacion certificacion, LocalDate fecha) {
+	    return certificacion.validarCertificacionVigente(fecha);
+	}
 
 	public String getTurno() {
 		return turno;

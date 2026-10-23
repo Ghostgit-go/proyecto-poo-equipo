@@ -1,37 +1,41 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 
-public class Usuario {
+public abstract class Usuario implements Notificable{
 	private String nombre;
-	private String idUnico;
+	private String id;
 	private String correo;
-	private String tipo;
 	
-	public Usuario(String nombre, String idUnico, String correo, String tipo) {
+	public Usuario(String nombre, String id, String correo) {
 		
 		this.nombre = nombre;
-		this.idUnico = idUnico;
+		this.id = id;
 		this.correo = correo;
-		this.tipo = tipo;
 	}
 	
-	public void mostrarUsuario() {
-		System.out.println("Nombre: " + nombre +" Id unico: " + idUnico+ " Correo: "+ correo + "tipo: "+ tipo); 
+	@Override
+	public String toString() {
+		return "Nombre: " + nombre +" Id unico: " + id+ " Correo: "+ correo; 
 	}
 	
 	public String getNombre() {
 		return nombre;
 	}
 	
-	public String getIdUnico() {
-		return idUnico;
+	public String getId() {
+		return id;
 	}
 	
 	public String getCorreo() {
 		return correo;
 	}
 	
-	public String getTipo() {
-		return tipo;
+	public abstract String getTipoUsuario();
+	
+	@Override
+	public void notificar(String mensaje) {
+		System.out.println(mensaje);
 	}
+	
+
 	   
 }

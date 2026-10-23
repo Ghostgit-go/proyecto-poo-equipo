@@ -1,6 +1,6 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 
-public class Equipos {
+public abstract class Equipos {
 	private String codigo;
 	private String nombre;
 	private int nivelRiesgo;
@@ -14,6 +14,8 @@ public class Equipos {
 		this.estado = estado;
 		this.laboratorio = laboratorio;
 	}
+	
+	public abstract String getTipoEquipo();
 	
 	public String getCodigo() {
 		return codigo;}
@@ -31,20 +33,16 @@ public class Equipos {
 		return laboratorio;}
 	
 	// se invoca cuando un equipo este disponible
-	public boolean estaDisponible() {
+	public boolean disponibilidad() {
 		return estado.equals("disponible");
 	}
 	// para evitar tantos metodos sobrecargados, aqui le ponemos el estado al quipo
 	public void cambiarEstado(String estado) {
 		this.estado = estado;
 	}
-	// este metodo se sobreescrible cuando haya que identificar cada tipo de equipo
-	public String tipoEspecifico() {
-		return "base"; // aqui se superpondra por cada tipo de equipo
-	}
 	
 	public void mostrarEstado() {
-		System.out.println("Codigo: "+ codigo + " Nombre: " + nombre+ " Nivel de riego: "+ nivelRiesgo + " Estado: "+ estado+ " tipo: "+tipoEspecifico());    
+		System.out.println("Codigo: "+ codigo + " Nombre: " + nombre+ " Nivel de riego: "+ nivelRiesgo + " Estado: "+ estado);    
 	}
 
 }

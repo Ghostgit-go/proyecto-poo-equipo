@@ -1,6 +1,6 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 
-public class Reserva {
+public class Reserva implements Notificable{
 	private Usuario usuario;
 	private Equipos equipos;
 	private String fecha;
@@ -57,6 +57,11 @@ public class Reserva {
 	
 	public String getEstado() {
 		return estado;
+	}
+	
+	@Override
+	public void notificar(String mensaje) {
+		System.out.println(mensaje);
 	}
 	
 }

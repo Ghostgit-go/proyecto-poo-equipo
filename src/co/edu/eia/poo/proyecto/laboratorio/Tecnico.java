@@ -1,15 +1,23 @@
 package co.edu.eia.poo.proyecto.laboratorio;
+import java.util.List;
 
 public class Tecnico extends Usuario {
     private String especialidad;
+    private List<TicketMantenimiento> tickets;
 
-    public Tecnico(String idUnico, String nombre, String correo, String tipo, String especialidad) {
-        super(idUnico, nombre, correo, tipo);
+    public Tecnico(String nombre, String id, String correo, String especialidad) {
+        super(id, nombre, correo);
         this.especialidad = especialidad;
     }
+    
+    @Override
+    public String getTipoUsuario() {
+    	return "Técnico - Encargado de arreglar los equipos";
+    }
+    
     //verifica que el equipo este disponible
     public void validarDisponibilidadEquipo(Equipos equipos) {
-        if (!equipos.estaDisponible()) {
+        if (!equipos.disponibilidad()) {
             throw new IllegalStateException("El equipo " + equipos.getCodigo() + " no está disponible");
         }
     }

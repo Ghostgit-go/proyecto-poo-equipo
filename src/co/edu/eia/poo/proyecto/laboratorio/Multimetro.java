@@ -10,6 +10,11 @@ public class Multimetro extends Equipos {
 		this.precision = precision;
 	}
 	
+	@Override
+	public String getTipoEquipo() {
+		return "Multimetro - Mide diferentes magnitudes eléctricas en circuitos, componentes y aparatos";
+	}
+	
 	public String getRangoMedicion() {
 		return rangoMedicion;
 	}
@@ -17,10 +22,6 @@ public class Multimetro extends Equipos {
 	public double getPrecision() {
 		return precision;
 	}
-	// aqui identifica el metodo de tipoespecifico y lo superpone por multimetro
-	@Override
-	public String tipoEspecifico() {
-		return "Multimetro";
-	}
+	
 
 }

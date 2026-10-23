@@ -1,20 +1,22 @@
 package co.edu.eia.poo.proyecto.laboratorio;
+import java.time.LocalDate;
+
 public class Prueba {
 
 	public static void main(String[] args) {
 
 		// se crean los tipos de usuarios
 		System.out.println("Registrar usuarios");
-		Estudiante estudiante = new Estudiante("Natalia Diaz", "U001", "natalia@eia.edu.co", "estudiante", "Ing. de Sistemas", "5");
-		Profesor profesor = new Profesor("Carlos Ruiz", "U002", "cruiz@eia.edu.co", "profesor", "Mecanica");
-		Tecnico tecnico = new Tecnico("U003", "Laura Gomez", "lgomez@eia.edu.co", "tecnico", "Electronica");
-		AuxiliarLaboratorio auxiliar = new AuxiliarLaboratorio("Pedro Diaz", "U004", "pdiaz@eia.edu.co", "auxiliar", "manana");
+		Estudiante estudiante = new Estudiante("Natalia Diaz", "U001", "natalia@eia.edu.co", "Ing. de Sistemas", "5");
+		Profesor profesor = new Profesor("Carlos Ruiz", "U002", "cruiz@eia.edu.co", "Mecanica");
+		Tecnico tecnico = new Tecnico("Laura Gomez", "U003", "lgomez@eia.edu.co", "Electronica");
+		AuxiliarLaboratorio auxiliar = new AuxiliarLaboratorio("Pedro Diaz", "U004", "pdiaz@eia.edu.co", "mañana");
 
 		// se llaman los metodos para mostrar en pantalla
-		estudiante.mostrarUsuario();
-		profesor.mostrarUsuario();
-		tecnico.mostrarUsuario();
-		auxiliar.mostrarUsuario();
+		System.out.println(estudiante);
+		System.out.println(profesor);
+		System.out.println(tecnico);
+		System.out.println(auxiliar);
 
 		// se crea el laboratorio y se ve si esta abierto
 		System.out.println("\nRegistrar laboratorio");
@@ -37,12 +39,12 @@ public class Prueba {
 
 		// creamos la certificacion y formacion, para luego exigir la certificacion
 		System.out.println("\nCapacitacion y certificacion");
-		Capacitacion capacitacionLaser = new Capacitacion("2024-01-10", "2025-01-10", estudiante, cortadora, "Uso seguro de cortadora laser", 4);
-		Certificacion certificacionLaser = new Certificacion("2024-01-10", "2025-01-10", estudiante, cortadora, "CortadoraLaser");
+		Capacitacion capacitacionLaser = new Capacitacion("Uso seguro de cortadora laser", 4, "CAP-001", "Cortadora Laser");
+		Certificacion certificacionLaser = new Certificacion("CER-001", LocalDate.of(2025, 1, 10), 360, profesor, "CortadoraLaser");
 		
 		estudiante.inscribirCapacitacion(capacitacionLaser);
 		capacitacionLaser.registrarAsistencia(estudiante);
-		System.out.println("Certificacion vigente? " + certificacionLaser.estaVigente());
+		System.out.println("Certificacion vigente? "+ certificacionLaser.validarCertificacionVigente(LocalDate.now()));
 		auxiliar.registrarCapacitacionesCertificaciones(capacitacionLaser, certificacionLaser);
 
 		// se crea una reserva, luego aqu[i ira si se cruzan las horas
