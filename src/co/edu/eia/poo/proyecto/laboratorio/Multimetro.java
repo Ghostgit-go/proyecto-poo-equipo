@@ -1,18 +1,18 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 
-public class Multimetro extends Equipos {
+public class Multimetro extends Equipo {
 	private String rangoMedicion;
 	private double precision;
 	
-	public Multimetro(String codigo, String nombre, int nivelRiesgo, String estado, Laboratorios laboratorios, String rangoMedicion, double precision) {
-		super(codigo, nombre, nivelRiesgo, estado, laboratorios);
+	public Multimetro(String codigo, String nombre, int nivelRiesgo, String estado, Laboratorio laboratorio, String rangoMedicion, double precision) {
+		super(codigo, nombre, nivelRiesgo, estado, laboratorio);
 		this.rangoMedicion = rangoMedicion;
 		this.precision = precision;
 	}
 	
 	@Override
 	public String getTipoEquipo() {
-		return "Multimetro - Mide diferentes magnitudes eléctricas en circuitos, componentes y aparatos";
+		return "Multimetro";
 	}
 	
 	public String getRangoMedicion() {

@@ -1,16 +1,16 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 
-public class Impresora3D extends Equipos{
+public class Impresora3D extends Equipo{
 	private String materialCompatible;
 	
-	public Impresora3D(String codigo, String nombre, int nivelRiesgo, String estado, Laboratorios laboratorios, String materialCompatible) {
-		super(codigo, nombre, nivelRiesgo, estado, laboratorios);
+	public Impresora3D(String codigo, String nombre, int nivelRiesgo, String estado, Laboratorio laboratorio, String materialCompatible) {
+		super(codigo, nombre, nivelRiesgo, estado, laboratorio);
 		this.materialCompatible = materialCompatible;
 	}
 	
 	@Override
 	public String getTipoEquipo(){
-		return "Impresora 3D - Transforma archivos digitales en objetos físicos tridimensionales";
+		return "Impresora 3D";
 	}
 	
 	public String getMaterialCompatible() {

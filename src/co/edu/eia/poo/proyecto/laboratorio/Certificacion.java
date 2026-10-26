@@ -1,12 +1,12 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 import java.time.LocalDate;
 
-public class Certificacion{
-	private String tipoEquipoAutorizado;
+public class Certificacion implements Identificable{
 	private String id;
 	private LocalDate fechaEmision;
 	private int vigenciaDias;
 	private Usuario usuario;
+	private String tipoEquipoAutorizado;
 	
 	public Certificacion(String id, LocalDate fechaEmision, int vigenciaDias, Usuario usuario, String tipoEquipoAutorizado) {
 		this.id = id;
@@ -15,21 +15,31 @@ public class Certificacion{
 		this.usuario = usuario;
 		this.tipoEquipoAutorizado = tipoEquipoAutorizado;
 	}
-	
-	//toma la fecha en que se emitió y súmale los días de vigencia
-	public LocalDate getFechaVencimiento() {
-	    return fechaEmision.plusDays(vigenciaDias);
-	}
-	
-	// verifica que la certificacion siga vigente, sino, lanza la excepcion
+	//si la certificacion esta vigente en la fecha dada debe haberse emitido ya
+    //y no haber pasado fechaEmision + vigenciaDias
 	public boolean validarCertificacionVigente(LocalDate fecha) {
-		    return !fecha.isBefore(fechaEmision) && !fecha.isAfter(getFechaVencimiento());
-	}
+	        LocalDate vence = fechaEmision.plusDays(vigenciaDias);
+	        return !fecha.isBefore(fechaEmision) && !fecha.isAfter(vence);
+	    }
+	// si la certificacion sigue vigente pero vence dentro de los proximos dias
+    // sirve para el reporte de certificaciones priximas a vencer
+    public boolean proximaVencer(LocalDate fecha, int dias) {
+        LocalDate vence = fechaEmision.plusDays(vigenciaDias);
+        return validarCertificacionVigente(fecha) && !vence.isAfter(fecha.plusDays(dias));
+    }
+    public boolean autorizaPara(Equipo e, LocalDate f) {
+        return e.getTipoEquipo().equals(tipoEquipoAutorizado) && validarCertificacionVigente(f);
+    }
 	
 	public String getTipoEquipoAutorizado() {
 		return tipoEquipoAutorizado;
 	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	@Override
 	public String getId() {
 		return id;
 	}

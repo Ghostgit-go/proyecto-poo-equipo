@@ -1,13 +1,13 @@
 package co.edu.eia.poo.proyecto.laboratorio;
 
-public abstract class Equipos {
+public abstract class Equipo implements Identificable{
 	private String codigo;
 	private String nombre;
 	private int nivelRiesgo;
 	private String estado;
-	private Laboratorios laboratorio;
+	private Laboratorio laboratorio;
 
-	public Equipos(String codigo, String nombre, int nivelRiesgo, String estado, Laboratorios laboratorio ) {
+	public Equipo(String codigo, String nombre, int nivelRiesgo, String estado, Laboratorio laboratorio ) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.nivelRiesgo = nivelRiesgo;
@@ -17,7 +17,8 @@ public abstract class Equipos {
 	
 	public abstract String getTipoEquipo();
 	
-	public String getCodigo() {
+	@Override
+	public String getId() {
 		return codigo;}
 	
 	public String getNombre() {
@@ -29,7 +30,7 @@ public abstract class Equipos {
 	public String getEstado() {
 		return estado;}
 	
-	public Laboratorios getLaboratorio() {
+	public Laboratorio getLaboratorio() {
 		return laboratorio;}
 	
 	// se invoca cuando un equipo este disponible
@@ -39,10 +40,6 @@ public abstract class Equipos {
 	// para evitar tantos metodos sobrecargados, aqui le ponemos el estado al quipo
 	public void cambiarEstado(String estado) {
 		this.estado = estado;
-	}
-	
-	public void mostrarEstado() {
-		System.out.println("Codigo: "+ codigo + " Nombre: " + nombre+ " Nivel de riego: "+ nivelRiesgo + " Estado: "+ estado);    
 	}
 
 }
