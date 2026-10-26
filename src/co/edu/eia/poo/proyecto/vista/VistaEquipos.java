@@ -14,11 +14,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class VistaEquipos extends BorderPane {
 
@@ -28,12 +30,44 @@ public class VistaEquipos extends BorderPane {
 	private final TextField campoBusqueda = new TextField();
 	private final ComboBox<String> filtroEstado = new ComboBox<>();
 
+	private final Label lblTotal = new Label("0");
+	private final Label lblDisponibles = new Label("0");
+	private final Label lblMantenimiento = new Label("0");
+	private final Label lblOcupados = new Label("0");
+
 	public VistaEquipos(EquipoRepositorio repositorio) {
 		this.repositorio = repositorio;
-		setPadding(new Insets(12));
-		setTop(crearBarra());
+		setPadding(new Insets(16));
+		setTop(crearEncabezado());
 		setCenter(crearTabla());
 		recargar();
+	}
+
+	private VBox crearEncabezado() {
+		Label titulo = new Label("Gestión de Laboratorios");
+		titulo.getStyleClass().add("titulo");
+		Label subtitulo = new Label("Inventario de equipos y su estado actual");
+		subtitulo.getStyleClass().add("subtitulo");
+
+		HBox tarjetas = new HBox(12,
+				crearTarjeta("Total de equipos", lblTotal),
+				crearTarjeta("Disponibles", lblDisponibles),
+				crearTarjeta("En mantenimiento", lblMantenimiento),
+				crearTarjeta("Ocupados", lblOcupados));
+
+		VBox encabezado = new VBox(10, titulo, subtitulo, tarjetas, crearBarra());
+		encabezado.setPadding(new Insets(0, 0, 12, 0));
+		return encabezado;
+	}
+
+	private VBox crearTarjeta(String texto, Label numero) {
+		numero.getStyleClass().add("tarjeta-numero");
+		Label etiqueta = new Label(texto);
+		etiqueta.getStyleClass().add("tarjeta-texto");
+		VBox tarjeta = new VBox(2, numero, etiqueta);
+		tarjeta.getStyleClass().add("tarjeta");
+		tarjeta.setMinWidth(150);
+		return tarjeta;
 	}
 
 	private HBox crearBarra() {
@@ -43,7 +77,6 @@ public class VistaEquipos extends BorderPane {
 
 		HBox barra = new HBox(10, new Label("Buscar:"), campoBusqueda, new Label("Estado:"), filtroEstado);
 		barra.setAlignment(Pos.CENTER_LEFT);
-		barra.setPadding(new Insets(0, 0, 10, 0));
 		return barra;
 	}
 
@@ -65,6 +98,24 @@ public class VistaEquipos extends BorderPane {
 
 		TableColumn<Equipos, String> colEstado = new TableColumn<>("Estado");
 		colEstado.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getEstado()));
+		colEstado.setCellFactory(col -> new TableCell<Equipos, String>() {
+			private final Label etiqueta = new Label();
+
+			@Override
+			protected void updateItem(String estado, boolean vacio) {
+				super.updateItem(estado, vacio);
+				if (vacio || estado == null) {
+					setGraphic(null);
+					setText(null);
+					return;
+				}
+				etiqueta.setText(estado);
+				etiqueta.getStyleClass().removeAll("badge", "badge-verde", "badge-amarillo", "badge-rojo", "badge-gris");
+				etiqueta.getStyleClass().addAll("badge", claseEstado(estado));
+				setText(null);
+				setGraphic(etiqueta);
+			}
+		});
 
 		TableColumn<Equipos, String> colLab = new TableColumn<>("Laboratorio");
 		colLab.setCellValueFactory(c -> new SimpleStringProperty(
@@ -74,6 +125,20 @@ public class VistaEquipos extends BorderPane {
 		tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 		tabla.setPlaceholder(new Label("No hay equipos para mostrar"));
 		return tabla;
+	}
+
+	private String claseEstado(String estado) {
+		String e = estado.toLowerCase();
+		if (e.equals("disponible")) {
+			return "badge-verde";
+		}
+		if (e.contains("manten")) {
+			return "badge-amarillo";
+		}
+		if (e.contains("fuera")) {
+			return "badge-rojo";
+		}
+		return "badge-gris";
 	}
 
 	private void aplicarFiltro() {
@@ -89,8 +154,20 @@ public class VistaEquipos extends BorderPane {
 		});
 	}
 
+	private void actualizarContadores() {
+		lblTotal.setText(String.valueOf(datos.size()));
+		lblDisponibles.setText(String.valueOf(
+				datos.stream().filter(e -> e.getEstado().equalsIgnoreCase("disponible")).count()));
+		lblMantenimiento.setText(String.valueOf(
+				datos.stream().filter(e -> e.getEstado().toLowerCase().contains("manten")).count()));
+		lblOcupados.setText(String.valueOf(
+				datos.stream().filter(e -> e.getEstado().equalsIgnoreCase("ocupado")
+						|| e.getEstado().equalsIgnoreCase("prestado")).count()));
+	}
+
 	public void recargar() {
 		datos.setAll(repositorio.listar());
+		actualizarContadores();
 
 		String seleccionado = filtroEstado.getValue();
 		List<String> estados = new ArrayList<>();

@@ -1,6 +1,8 @@
 module Proyecto_Laboratorio {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
+    requires org.postgresql.jdbc;
 
     exports co.edu.eia.poo.proyecto.laboratorio;
     exports co.edu.eia.poo.proyecto.vista;

@@ -1,0 +1,64 @@
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f6fb;
+}
+
+.label { -fx-text-fill: #334155; }
+
+.titulo { -fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1e293b; }
+.subtitulo { -fx-text-fill: #64748b; }
+
+.text-field, .combo-box-base {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8;
+    -fx-padding: 4 8;
+}
+.text-field:focused { -fx-border-color: #4f46e5; }
+
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 10;
+}
+.table-view .column-header-background { -fx-background-color: #1e293b; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #1e293b;
+    -fx-size: 40;
+    -fx-border-color: transparent;
+}
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
+}
+.table-row-cell { -fx-cell-size: 42; -fx-border-color: transparent; }
+.table-row-cell:odd { -fx-background-color: #f8fafc; }
+.table-row-cell:even { -fx-background-color: white; }
+.table-row-cell:filled:selected { -fx-background-color: #e0e7ff; }
+.table-cell { -fx-padding: 8 10; -fx-text-fill: #1e293b; }
+.table-row-cell:filled:selected .table-cell { -fx-text-fill: #1e1b4b; }
+
+.tarjeta {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 10;
+    -fx-padding: 12 20;
+}
+.tarjeta-numero { -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4f46e5; }
+.tarjeta-texto { -fx-font-size: 12px; -fx-text-fill: #64748b; }
+
+.badge {
+    -fx-padding: 3 10;
+    -fx-background-radius: 12;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+.badge-verde { -fx-background-color: #dcfce7; -fx-text-fill: #166534; }
+.badge-amarillo { -fx-background-color: #fef3c7; -fx-text-fill: #92400e; }
+.badge-rojo { -fx-background-color: #fee2e2; -fx-text-fill: #991b1b; }
+.badge-gris { -fx-background-color: #e2e8f0; -fx-text-fill: #334155; }
