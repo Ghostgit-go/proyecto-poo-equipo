@@ -1,27 +1,10 @@
-## Cómo importar el proyecto
-
-1. Abre Eclipse.
-2. Ve a `File > Import > Git > Projects from Git > Clone URI`.
-3. Pega la URL del repositorio (HTTPS o SSH) y sigue el asistente.
-4. Cuando termine el clonado, selecciona **"Import as general project"** o **"Import existing Eclipse projects"** según corresponda.
-5. Finaliza el asistente; el proyecto quedará visible en el **Package Explorer**.
-
 ## Cómo ejecutar el proyecto
 
-1. Ubica la clase con el método `main` (por ejemplo `[NombreClasePrincipal].java`).
-2. Click derecho sobre el archivo → `Run As > Java Application`.
-3. La ejecución mostrará el menú/resultados por consola.
+**Requisitos:** JDK 21, Eclipse con soporte Maven, PostgreSQL (con pgAdmin).
 
-## Cómo probar el proyecto
-
-1. Las pruebas se encuentran en la carpeta `src/test` (o `[ruta_de_pruebas]`).
-2. Click derecho sobre la clase de prueba → `Run As > JUnit Test`.
-3. Revisa la consola de resultados de JUnit en Eclipse (verde = pasó, rojo = falló).
-
-## Capacidad N usada en arreglos y datos de prueba
-
-- El proyecto utiliza arreglos de tamaño fijo definidos por la constante `N = [valor]`, ubicada en `[NombreClase].java`.
-- Esta capacidad determina el número máximo de elementos que se pueden almacenar (ej. estudiantes, productos, vehículos, según el dominio del proyecto).
-- **Datos de prueba:** se precargan `[cantidad]` registros de ejemplo al iniciar el programa, ubicados en `[NombreClase / método]`, para validar el correcto funcionamiento de las operaciones (agregar, buscar, eliminar, listar).
-
-
+1. Clonar el repositorio, importarlo en Eclipse (File > Import > Maven > Existing Maven Projects) y cambiar a la rama `front`.
+2. Instalar PostgreSQL y crear en pgAdmin una base de datos llamada `laboratorios`.
+3. Abrir la Query Tool sobre esa base, cargar el archivo `bd/esquema.sql` y ejecutarlo. Si ya se había ejecutado antes, borrar la base y crearla de nuevo.
+4. Copiar `config.properties.example` a un archivo `config.properties` en la raíz del proyecto y poner allí su puerto y su contraseña de PostgreSQL. Este archivo no se sube a GitHub.
+5. Clic derecho en el proyecto > Maven > Update Project.
+6. Ejecutar la clase `co.edu.eia.poo.proyecto.vista.Main` con Run As > Java Application.
